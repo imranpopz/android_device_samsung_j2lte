@@ -47,7 +47,6 @@ void property_override(char const prop[], char const value[])
 }
 
 void set_sim_info()
-
 {
 	char* simslot_count_path = (char *)"/proc/simslot_count";
 
@@ -67,20 +66,21 @@ void set_sim_info()
 	fclose(file);
 
 }
+
 void vendor_load_properties()
 {
 	std::string bl;
 
 	bl = property_get("ro.bootloader");
 
-	if (bl.find("J200G") != std::string::npos) {
-		property_override("ro.product.model", "SM-J200G");
-	} else if (bl.find("J200GU") != std::string::npos) {
-		property_override("ro.product.model", "SM-J200GU");
+	if (bl.find("J200GU") != std::string::npos) {
+		property_override("ro.product.model", "J200GU");
 	} else if (bl.find("J200M") != std::string::npos) {
-		property_override("ro.product.model", "SM-J200M");
+		property_override("ro.product.model", "J200M");
 	} else if (bl.find("J200F") != std::string::npos) {
-		property_override("ro.product.model", "SM-J200F");
-	}
+		property_override("ro.product.model", "J200F");
+	} else if (bl.find("J200BT") != std::string::npos) {
+		property_override("ro.product.model", "J200BT");
+	}	
 	set_sim_info();
 }
